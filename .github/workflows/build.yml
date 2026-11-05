@@ -9,6 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: unzip -q YtClip.zip
+      - run: |
+          sed -i 's/listOf("arm64-v8a", "armeabi-v7a", "x86_64")/listOf("arm64-v8a")/' YtClip/app/build.gradle.kts
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
