@@ -11,9 +11,14 @@
 
 ### Features
 - Paste a link, or share it from the YouTube app (Share → YtClip).
-- Optional trimming: enter a start and end time (`0:30`, `1:15`). Only that section is downloaded.
+- Choose an available video quality up to 4K, or download audio as M4A or MP3.
+- A quick quality list appears first; a slower full-format scan runs only when requested.
+- Trim with a range slider or enter hours, minutes, and seconds.
+- See an approximate full-video and selected-clip size before downloading; the Files tab shows the actual saved size.
 - Optional frame-accurate cut (slower, re-encodes the video).
-- Saves the result to `Movies/YtClip` so it appears in your gallery.
+- Background download queue with progress, pause, resume, cancel, and notifications.
+- Video previews stay in the app instead of creating a separate JPG; audio cover art is embedded in the audio file.
+- Custom dark/light backgrounds and accent colors, including blue.
 - Updates yt-dlp automatically on launch.
 
 ### Requirements
@@ -54,9 +59,14 @@
 
 ### المزايا
 - الصق الرابط، أو شاركه من تطبيق يوتيوب (مشاركة ← YtClip).
-- قص اختياري: أدخل وقت البداية والنهاية مثل `0:30` و`1:15`، فيُحمَّل ذلك الجزء فقط.
+- اختر جودة متاحة حتى 4K، أو نزّل الصوت بصيغة M4A أو MP3.
+- تظهر قائمة الجودات السريعة أولاً؛ ولا يبدأ الفحص الكامل الأبطأ إلا عند طلبه.
+- قصّ المقطع باستخدام شريط التحديد أو بإدخال الساعات والدقائق والثواني.
+- شاهد الحجم التقديري للفيديو كاملاً وللمقطع المحدد قبل التنزيل؛ ويعرض تبويب الملفات الحجم الفعلي بعد الحفظ.
 - قص دقيق على مستوى الإطار اختيارياً (أبطأ، ويعيد ترميز الفيديو).
-- يحفظ الناتج في `Movies/YtClip` فيظهر في معرض الصور.
+- قائمة تنزيلات تعمل في الخلفية مع التقدم والإيقاف والاستئناف والإلغاء والإشعارات.
+- تظهر معاينة الفيديو داخل التطبيق دون إنشاء صورة JPG منفصلة، وتُضمّن صورة الغلاف في ملف الصوت.
+- خلفيات داكنة وفاتحة وألوان تمييز قابلة للتخصيص، ومنها الأزرق.
 - يحدّث yt-dlp تلقائياً عند فتح التطبيق.
 
 ### المتطلبات
