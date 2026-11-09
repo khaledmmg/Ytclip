@@ -1,89 +1,38 @@
-# YtClip
+Download, trim and keep videos & audio — fast, clean, and fully yours.
+A premium Android downloader built on yt-dlp · FFmpeg · aria2c
+English · العربية
 
-[English](#english) | [العربية](#arabic)
-
----
-
-<a name="english"></a>
-## English
-
-**YtClip** is a small Android app that downloads YouTube videos with [yt-dlp](https://github.com/yt-dlp/yt-dlp) and can trim them to a start/end time while downloading. It uses the [youtubedl-android](https://github.com/yausername/youtubedl-android) library (yt-dlp + ffmpeg bundled inside the app).
-
-### Features
-- Paste a link, or share it from the YouTube app (Share → YtClip).
-- Optional trimming: enter a start and end time (`0:30`, `1:15`). Only that section is downloaded.
-- Optional frame-accurate cut (slower, re-encodes the video).
-- Saves the result to `Movies/YtClip` so it appears in your gallery.
-- Updates yt-dlp automatically on launch.
-
-### Requirements
-- Android 10 (API 29) or newer.
-- A 64-bit (arm64) phone for the prebuilt APK.
-
-### Build the APK without Android Studio (GitHub Actions)
-1. Create a free account on github.com and a **public** repository.
-2. Upload `YtClip.zip` to the root of the repository (**Add file → Upload files**).
-3. Create the file `.github/workflows/build.yml` (it unzips the project, builds it, and publishes the APK to Releases).
-4. Open **Actions → Build APK → Run workflow**, then wait about 2 minutes for the green check mark.
-5. Open **Releases**, download `app-debug.apk`, and install it.
-
-> The APK is about 55–65 MB when built for arm64 only. Download it over Wi-Fi and keep the browser open until it finishes. If the install fails with "package seems invalid", the download was incomplete: delete the file and download it again.
-
-### Install
-- Open the APK and allow "Install from unknown sources" if Android asks.
-- If Play Protect shows a warning, choose "Install anyway" (the app is self-built and not signed by Google Play).
-
-### Usage
-1. Wait until the app shows **Ready**.
-2. Paste the YouTube link.
-3. (Optional) Enter start and end times.
-4. Press **Download**. Keep the app open until it finishes.
-
-### Notes
-- Only download content you own or have permission to download. Downloading from YouTube may violate its Terms of Service.
-- If downloads stop working, YouTube probably changed something. Open the app with internet access so yt-dlp can update itself.
-
----
-
-<a name="arabic"></a>
-<div dir="rtl">
-
-## العربية
-
-**YtClip** تطبيق أندرويد صغير يحمّل فيديوهات يوتيوب باستخدام [yt-dlp](https://github.com/yt-dlp/yt-dlp) ويمكنه قصّها بحسب وقت البداية والنهاية أثناء التحميل. يعتمد على مكتبة [youtubedl-android](https://github.com/yausername/youtubedl-android) التي تضم yt-dlp وffmpeg داخل التطبيق.
-
-### المزايا
-- الصق الرابط، أو شاركه من تطبيق يوتيوب (مشاركة ← YtClip).
-- قص اختياري: أدخل وقت البداية والنهاية مثل `0:30` و`1:15`، فيُحمَّل ذلك الجزء فقط.
-- قص دقيق على مستوى الإطار اختيارياً (أبطأ، ويعيد ترميز الفيديو).
-- يحفظ الناتج في `Movies/YtClip` فيظهر في معرض الصور.
-- يحدّث yt-dlp تلقائياً عند فتح التطبيق.
-
-### المتطلبات
-- أندرويد 10 (API 29) أو أحدث.
-- هاتف بمعالج 64 بت (arm64) لتشغيل ملف APK الجاهز.
-
-### بناء ملف APK دون Android Studio (عبر GitHub Actions)
-1. أنشئ حساباً مجانياً على github.com ومستودعاً **عاماً (Public)**.
-2. ارفع الملف `YtClip.zip` إلى جذر المستودع (**Add file ← Upload files**).
-3. أنشئ الملف `.github/workflows/build.yml` (يفك ضغط المشروع ويبنيه وينشر ملف APK في قسم Releases).
-4. افتح **Actions ← Build APK ← Run workflow**، وانتظر نحو دقيقتين حتى تظهر علامة الصح الخضراء.
-5. افتح **Releases** ونزّل `app-debug.apk` ثم ثبّته.
-
-> حجم الملف نحو 55 إلى 65 ميغابايت عند البناء لمعالجات arm64 فقط. نزّله عبر الواي فاي، وأبقِ المتصفح مفتوحاً حتى يكتمل التنزيل. وإن ظهرت رسالة «الحزمة تبدو غير صالحة» عند التثبيت، فالتنزيل لم يكتمل: احذف الملف وأعد تنزيله.
-
-### التثبيت
-- افتح ملف APK وفعّل «التثبيت من مصادر غير معروفة» إن طلب أندرويد ذلك.
-- إن ظهر تحذير من Play Protect فاختر «التثبيت على أي حال»، لأن التطبيق مبني ذاتياً وغير موقّع من متجر جوجل.
-
-### طريقة الاستخدام
-1. انتظر حتى تظهر عبارة **Ready** في التطبيق.
-2. الصق رابط الفيديو.
-3. (اختياري) أدخل وقت البداية والنهاية.
-4. اضغط **Download**، وأبقِ التطبيق مفتوحاً حتى ينتهي.
-
-### ملاحظات
-- حمّل فقط المحتوى الذي تملكه أو لديك إذن بتحميله، فقد يخالف التحميل من يوتيوب شروط الخدمة.
-- إن توقف التحميل فغالباً غيّر يوتيوب شيئاً في موقعه. افتح التطبيق وأنت متصل بالإنترنت ليحدّث yt-dlp نفسه.
-
-</div>
+English
+Why YtClip
+YtClip pairs the power of yt-dlp with an interface designed like a modern iOS/Material app:
+a full format list with accurate sizes, a precise trimmer, live speed meter, queue management and a built-in browser —
+all in one APK, no ads, no accounts required.
+Highlights
+Browse & download
+Built-in browser (YouTube, Facebook, Instagram, TikTok, X) with a one-tap Download button, ad/tracker blocking, and link detection from clipboard, Share and "Open with".
+Smart quality list
+Every real quality from 144p to 4K, plus M4A / MP3 128K / MP3 320K, each with an honest size estimate (the size of the file that will actually be downloaded).
+Precise trimming
+Two modes: a range slider with ±1 s / ±10 s nudges and presets, or type hours:minutes:seconds. Sizes update live for the clip, and the sheet shows “Clip 0:45 of 3:10:40 · about 34 MB”.
+Cover art inside the file
+The thumbnail is always embedded as cover art (no stray image files). Title, chapters and metadata are embedded too.
+Subtitles & translation
+Optional: Original, English, Arabic, French, Spanish or any language code — including YouTube's auto-translated captions. Embed in the video or save .srt. Or download subtitles only.
+Turbo downloads
+aria2c with up to 16 connections per file, parallel queue (1–3 at once), speed limit, automatic safe fallback and auto-retry when the connection drops.
+Live speed meter
+Total speed, peak and average with a live graph on the Downloads tab, per-file speed & ETA, and speed in the notification.
+Queue control
+Pause / resume / cancel each download, Pause all, Cancel all, background downloading with a foreground notification, resume from partial files.
+Playlists & batch
+Pick videos from a playlist, or paste several links at once. Optional one-tap mode (no sheet).
+SponsorBlock
+Optionally cut sponsor / intro / outro segments.
+Library
+Search, sort, rename, share, delete; thumbnails, `720P
+Themes
+4 backgrounds + Auto (follows the system) × 10 vivid accents, subtle animations (can be turned off).
+Google account
+Sign in inside the app (or import cookies.txt) for age-restricted videos and bot checks.
+Pro touches
+Low-storage warning, launcher shortcuts (Paste & download, Downloads), crash report on next launch, full error log for failed downloads.
