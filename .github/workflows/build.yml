@@ -1,24 +1,66 @@
+# Save this file as .github/workflows/build.yml in the repo (replace the old one).
 name: Build APK
+
 on:
   workflow_dispatch:
+
 permissions:
   contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
-      - run: unzip -oq YtClip.zip -d YtClip
+
+      - name: Check the project archive
+        run: |
+          test -f YtClip.zip || { echo "::error::YtClip.zip is missing from the repo root"; exit 1; }
+          if unzip -l YtClip.zip | grep -q '\.github/'; then
+            echo "::error::YtClip.zip must not contain a .github folder. Remove it and upload again."
+            exit 1
+          fi
+
+      - name: Extract project
+        run: unzip -oq YtClip.zip -d YtClip
+
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
+
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: 8.9
-      - run: gradle assembleDebug
+
+      - name: Build debug APK
         working-directory: YtClip
-      - uses: softprops/action-gh-release@v2
+        run: |
+          set -o pipefail
+          gradle assembleDebug --stacktrace --console=plain 2>&1 | tee "$GITHUB_WORKSPACE/build.log"
+
+      - name: Keep the build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build.log
+          if-no-files-found: ignore
+
+      - name: Keep the APK
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug
+          path: YtClip/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+      - name: Publish release
+        if: success()
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: build-${{ github.run_number }}
+          name: YtClip build ${{ github.run_number }}
           files: YtClip/app/build/outputs/apk/debug/app-debug.apk
+          fail_on_unmatched_files: true
