@@ -33,12 +33,15 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: 8.9
+          # Do not reuse a cached Gradle home: a damaged cached library (the ffmpeg / python .zip.so
+          # entries were found corrupt in app-debug.apk) would otherwise be packed into every later build.
+          cache-disabled: true
 
       - name: Build debug APK
         working-directory: YtClip
         run: |
           set -o pipefail
-          gradle assembleDebug --stacktrace --console=plain 2>&1 | tee "$GITHUB_WORKSPACE/build.log"
+          gradle assembleDebug --refresh-dependencies --stacktrace --console=plain 2>&1 | tee "$GITHUB_WORKSPACE/build.log"
 
       - name: Keep the build log
         if: always()
@@ -48,12 +51,28 @@ jobs:
           path: build.log
           if-no-files-found: ignore
 
+      - name: Verify the APK
+        if: success()
+        run: |
+          set -o pipefail
+          python3 YtClip/tools/verify_apk.py YtClip/app/build/outputs/apk/debug/app-debug.apk \
+            --gradle-file YtClip/app/build.gradle.kts --require-tools | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Write the SHA-256 checksum
+        if: success()
+        working-directory: YtClip/app/build/outputs/apk/debug
+        run: |
+          sha256sum app-debug.apk > app-debug.apk.sha256
+          cat app-debug.apk.sha256
+
       - name: Keep the APK
         if: success()
         uses: actions/upload-artifact@v4
         with:
           name: app-debug
-          path: YtClip/app/build/outputs/apk/debug/app-debug.apk
+          path: |
+            YtClip/app/build/outputs/apk/debug/app-debug.apk
+            YtClip/app/build/outputs/apk/debug/app-debug.apk.sha256
           if-no-files-found: error
 
       - name: Publish release
@@ -62,5 +81,7 @@ jobs:
         with:
           tag_name: build-${{ github.run_number }}
           name: YtClip build ${{ github.run_number }}
-          files: YtClip/app/build/outputs/apk/debug/app-debug.apk
+          files: |
+            YtClip/app/build/outputs/apk/debug/app-debug.apk
+            YtClip/app/build/outputs/apk/debug/app-debug.apk.sha256
           fail_on_unmatched_files: true
